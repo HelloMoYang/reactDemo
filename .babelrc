@@ -1,4 +1,17 @@
 //.babelrc
 {
-  "presets": ["react", "es2015"]
+  "presets": [
+    "react",
+    "es2015"
+  ],
+  "plugins": [
+    [
+      "import",
+      {
+        "libraryName": "antd",
+        "libraryDirectory": "es",
+        "style": "css"
+      }
+    ]
+  ]
 }

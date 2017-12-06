@@ -1,5 +1,7 @@
 import React from "react";
-import Square from "./Square.jsx";
+import Square from "./Square";
+import { Layout } from 'antd'
+const { Header, Footer, Sider, Content } = Layout
 
 class Board extends React.Component {
   renderSquare(i) {
@@ -13,31 +15,29 @@ class Board extends React.Component {
     );
   }
   render() {
-    // const status = "Next player: " + (this.state.xIsNext ? 'X' : 'O');
-    // const winner = this.calculateWinner(this.state.squares);
-    // let status;
-    // if (winner) {
-    //   status = 'Winner: ' + winner;
-    // } else {
-    //   status = 'Next player: ' + (this.state.xIsNext ? 'X' : 'O');
-    // }
     return (
       <div>
-        <div className="board-row">
-          {this.renderSquare(0)}
-          {this.renderSquare(1)}
-          {this.renderSquare(2)}
-        </div>
-        <div className="board-row">
-          {this.renderSquare(3)}
-          {this.renderSquare(4)}
-          {this.renderSquare(5)}
-        </div>
-        <div className="board-row">
-          {this.renderSquare(6)}
-          {this.renderSquare(7)}
-          {this.renderSquare(8)}
-        </div>
+        <Layout>
+          <Header style={{ backgroundColor: 'red' }}>Header</Header>
+          <Content style={{ backgroundColor: 'blue' }}>
+            <div className="board-row">
+              {this.renderSquare(0)}
+              {this.renderSquare(1)}
+              {this.renderSquare(2)}
+            </div>
+            <div className="board-row">
+              {this.renderSquare(3)}
+              {this.renderSquare(4)}
+              {this.renderSquare(5)}
+            </div>
+            <div className="board-row">
+              {this.renderSquare(6)}
+              {this.renderSquare(7)}
+              {this.renderSquare(8)}
+            </div>
+          </Content>
+          <Footer style={{ backgroundColor: 'yellow' }}>Footer</Footer>
+        </Layout>
       </div>
     );
   }

@@ -14,9 +14,17 @@ module.exports = {
       {
         test: /\.(js|jsx)$/, //一个匹配loaders所处理的文件的拓展名的正则表达式，这里用来匹配js和jsx文件（必须）
         exclude: /node_modules/, //屏蔽不需要处理的文件（文件夹）（可选）
-        loader: "babel-loader" //loader的名称（必须）
+        loader: "babel-loader", //loader的名称（必须）
+      },
+      {
+        test: /\.css$/,
+        // exclude: /node_modules/,   注意
+        loader: "style-loader!css-loader"
       }
     ]
+  },
+  resolve: {
+    extensions: [".js", ".jsx", ".css"] //默认解析扩展路径，设置完成后再引入文件可以节约后缀名，如省略“.js”,".jsx"后缀
   },
   devServer: {
     contentBase: "./build", //默认webpack-dev-server会为根文件夹提供本地服务器，如果想为另外一个目录下的文件提供本地服务器，应该在这里设置其所在目录（本例设置到"build"目录）
@@ -27,6 +35,6 @@ module.exports = {
     //process: true,//显示合并代码进度
   },
   plugins: [
-    new webpack.HotModuleReplacementPlugin() //热模块替换插件
+    new webpack.HotModuleReplacementPlugin(), //热模块替换插件
   ]
 };
